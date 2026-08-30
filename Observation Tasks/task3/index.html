@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My To-Do List</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My To-Do List</h1>
+
+    <input type="text" id="taskInput" placeholder="Enter a task...">
+    <button id="addTask">Add Task</button>
+
+    <p id="emptyMessage">No tasks available.</p>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskInput = document.getElementById("taskInput");
+        const addTask = document.getElementById("addTask");
+        const taskList = document.getElementById("taskList");
+        const emptyMessage = document.getElementById("emptyMessage");
+
+        addTask.addEventListener("click", function () {
+
+            const taskText = taskInput.value.trim();
+
+            if (taskText === "") {
+                alert("Please enter a task.");
+                return;
+            }
+
+            // Create list item
+            const li = document.createElement("li");
+
+            // Create task text
+            const span = document.createElement("span");
+            span.textContent = taskText;
+
+            // Create Complete button
+            const completeButton = document.createElement("button");
+            completeButton.textContent = "Complete";
+
+            completeButton.addEventListener("click", function () {
+                span.classList.toggle("completed");
+            });
+
+            // Create Delete button
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+
+            deleteButton.addEventListener("click", function () {
+                li.remove();
+
+                if (taskList.children.length === 0) {
+                    emptyMessage.style.display = "block";
+                }
+            });
+
+            // Add elements to list item
+            li.appendChild(span);
+            li.appendChild(completeButton);
+            li.appendChild(deleteButton);
+
+            // Add list item to task list
+            taskList.appendChild(li);
+
+            // Hide empty message
+            emptyMessage.style.display = "none";
+
+            // Clear input box
+            taskInput.value = "";
+        });
+    </script>
+
+</body>
+</html>

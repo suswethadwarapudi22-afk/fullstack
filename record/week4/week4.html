@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dynamic Webpage</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+ font-family:Arial;
+ background:linear-gradient(135deg,#4facfe,#00f2fe);
+ min-height:100vh;
+}
+header{
+ background:#222;color:white;text-align:center;padding:20px;
+}
+.container{
+ width:95%;max-width:1200px;margin:20px auto;
+}
+.card{
+ background:white;padding:35px;min-height:200px;
+ margin-bottom:20px;border-radius:15px;
+ box-shadow:0 5px 15px #555;
+}
+input{
+ padding:12px;width:65%;margin:15px 0;
+}
+button{
+ padding:10px 15px;border:0;border-radius:5px;
+ background:#007bff;color:white;cursor:pointer;
+}
+button:hover{background:#0056b3}
+#clock{font-size:35px;margin-top:25px}
+li{margin:8px;padding:8px;background:#eee}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Dynamic Webpage</h1>
+<p>Using HTML, CSS and JavaScript</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Welcome</h2>
+<input id="name" placeholder="Enter your name">
+<button onclick="welcome()">Submit</button>
+<p id="msg"></p>
+</div>
+
+<div class="card">
+<h2>Live Clock</h2>
+<p id="clock"></p>
+</div>
+
+<div class="card">
+<h2>Task Manager</h2>
+<input id="task" placeholder="Enter task">
+<button onclick="addTask()">Add</button>
+<ul id="list"></ul>
+</div>
+
+<div class="card">
+<h2>Colour Theme</h2>
+<button onclick="blue()">Blue</button>
+<button onclick="green()">Green</button>
+<button onclick="dark()">Dark</button>
+</div>
+
+</div>
+
+<script>
+function welcome(){
+ let n=document.getElementById("name").value;
+ document.getElementById("msg").innerHTML="Welcome "+n;
+}
+
+function clock(){
+ document.getElementById("clock").innerHTML=
+ new Date().toLocaleTimeString();
+}
+setInterval(clock,1000);clock();
+
+function addTask(){
+ let t=document.getElementById("task").value;
+ if(t!=""){
+  let li=document.createElement("li");
+  li.innerHTML=t;
+  document.getElementById("list").appendChild(li);
+ }
+}
+
+function blue(){
+ document.body.style.background=
+ "linear-gradient(135deg,#4facfe,#00f2fe)";
+}
+function green(){
+ document.body.style.background=
+ "linear-gradient(135deg,#43e97b,#38f9d7)";
+}
+function dark(){
+ document.body.style.background=
+ "linear-gradient(135deg,#232526,#414345)";
+}
+</script>
+
+</body>
+</html>

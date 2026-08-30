@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Example</title>
+</head>
+
+<body>
+
+    <h2>DOM Example</h2>
+
+    <p id="message">This is the original paragraph.</p>
+
+    <button onclick="changeText()">Change Text</button>
+
+    <script>
+        function changeText() {
+            document.getElementById("message").innerHTML =
+                "The paragraph text has been changed dynamically!";
+        }
+    </script>
+
+</body>
+</html>
