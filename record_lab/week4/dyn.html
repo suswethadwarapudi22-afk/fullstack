@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 2026 Team Explorer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Formula 1 Team Explorer 2026</h1>
+
+<p>Enter or Select an F1 Team:</p>
+
+<input
+    type="text"
+    id="teamInput"
+    placeholder="Type team name">
+
+<p>OR</p>
+
+<select id="teamSelect" onchange="clearInput()">
+    <option value="">-- Select Team --</option>
+    <option value="mclaren">McLaren</option>
+    <option value="ferrari">Ferrari</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="red bull">Red Bull</option>
+    <option value="williams">Williams</option>
+    <option value="aston martin">Aston Martin</option>
+    <option value="alpine">Alpine</option>
+    <option value="haas">Haas</option>
+    <option value="racing bulls">Racing Bulls</option>
+    <option value="Audi">Audi</option>
+    <option value="cadillac">Cadillac</option>
+</select>
+
+<br><br>
+
+<button onclick="showTeam()">
+    Show Details
+</button>
+
+    <hr>
+
+    <div id="card">
+
+        <h2>Team Name</h2>
+
+        <p>Drivers:</p>
+
+        <p>Engine:</p>
+
+        <p>Position:</p>
+
+        <p>Wins:</p>
+
+        <p>Points:</p>
+
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>

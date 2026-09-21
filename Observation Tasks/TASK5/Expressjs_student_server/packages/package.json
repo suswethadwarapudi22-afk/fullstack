@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Rahul",
+    "course": "AIML"
+  },
+  {
+    "id": 2,
+    "name": "Priya",
+    "course": "CSE"
+  },
+  {
+    "id": 3,
+    "name": "Arjun",
+    "course": "ECE"
+  },
+  {
+    "id": 4,
+    "name": "Sneha",
+    "course": "AIML"
+  },
+  {
+    "id": 5,
+    "name": "Kiran",
+    "course": "IT"
+  }
+]

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM Profile Customizer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #eee8df;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: 0.4s;
+        }
+
+        .card {
+            width: 420px;
+            background: #fffdf9;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+
+            box-shadow: 0 10px 30px rgba(60, 45, 30, 0.15);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Pixel Avatar */
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            margin: auto;
+            border-radius: 18px;
+
+            background:
+                linear-gradient(#3c3029 0 0) 30px 15px / 60px 15px no-repeat,
+                linear-gradient(#e8b28b 0 0) 30px 30px / 60px 60px no-repeat,
+                linear-gradient(#3c3029 0 0) 30px 90px / 60px 15px no-repeat,
+                linear-gradient(#e8b28b 0 0) 15px 45px / 15px 30px no-repeat,
+                linear-gradient(#e8b28b 0 0) 90px 45px / 15px 30px no-repeat,
+                #f3d7c1;
+
+            position: relative;
+
+            border: 5px solid #d17a45;
+            box-shadow: 0 5px 15px rgba(70, 50, 35, 0.15);
+        }
+
+        .avatar::before {
+            content: "";
+            position: absolute;
+
+            width: 10px;
+            height: 10px;
+
+            background: #594985;
+
+            left: 42px;
+            top: 53px;
+
+            box-shadow: 25px 0 #4143b3;
+        }
+
+        .avatar::after {
+            content: "";
+            position: absolute;
+
+            width: 20px;
+            height: 5px;
+
+            background: #5146a2;
+
+            left: 45px;
+            top: 75px;
+        }
+
+        h1 {
+            margin: 18px 0 5px;
+            color: #3d3027;
+        }
+
+        #role {
+            color: #a4613a;
+            font-weight: bold;
+        }
+
+        #description {
+            color: #75675d;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            margin-top: 25px;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button {
+            border: none;
+            padding: 10px 14px;
+
+            border-radius: 8px;
+
+            background: #c56a35;
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #9f5028;
+            transform: scale(1.04);
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+
+            border-radius: 8px;
+
+            background: #f4eee7;
+            color: #66574c;
+
+            font-size: 14px;
+        }
+
+        /* Dark theme */
+
+        .dark {
+            background: #292622;
+        }
+
+        .dark .card {
+            background: #3a3530;
+        }
+
+        .dark h1 {
+            color: #fffaf4;
+        }
+
+        .dark #description {
+            color: #d8cec4;
+        }
+
+        .dark .status {
+            background: #484139;
+            color: #eee3d8;
+        }
+
+        .dark #role {
+            color: #e39a6d;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="card">
+
+        <!-- Faceless Pixel Avatar -->
+        <div
+            class="avatar"
+            id="avatar"
+            title="Pixel avatar">
+        </div>
+
+
+        <h1 id="name">
+            DWARAPUDI SUSWETHA
+        </h1>
+
+
+        <div id="role">
+            creative AI developer
+        </div>
+
+
+        <p id="description">
+            I enjoy creating useful applications
+            and exploring new technologies.
+        </p>
+
+
+        <div class="buttons">
+
+            <button onclick="changeName()">
+                Change Name
+            </button>
+
+            <button onclick="changeRole()">
+                Change Role
+            </button>
+
+            <button onclick="changeDescription()">
+                Change Bio
+            </button>
+
+            <button onclick="changeAvatar()">
+                Change Avatar
+            </button>
+
+            <button onclick="changeTheme()">
+                Change Theme
+            </button>
+
+        </div>
+
+
+        <div class="status" id="status">
+            DOM is ready. Try the buttons!
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Change content
+        function changeName() {
+
+            const name =
+                document.getElementById("name");
+
+            name.innerText = "Almas Mohammed";
+
+            document.getElementById("status").innerText =
+                "Name changed using the DOM.";
+        }
+
+
+        // Change content and style
+        function changeRole() {
+
+            const role =
+                document.getElementById("role");
+
+            role.innerText =
+                "Creative AI Developer";
+
+            role.style.color = "#7b4f35";
+
+            document.getElementById("status").innerText =
+                "Role and style changed dynamically.";
+        }
+
+
+        // Change content and style
+        function changeDescription() {
+
+            const description =
+                document.getElementById("description");
+
+            description.innerText =
+                "I love creating useful applications and exploring AI.";
+
+            description.style.fontSize = "17px";
+
+            document.getElementById("status").innerText =
+                "Bio and font size changed.";
+        }
+
+
+        // Change avatar style
+        function changeAvatar() {
+
+            const avatar =
+                document.getElementById("avatar");
+
+            avatar.style.background =
+                "#d9b6e8";
+
+            avatar.style.borderColor =
+                "#9259a8";
+
+            avatar.style.transform =
+                "rotate(3deg) scale(1.05)";
+
+            avatar.setAttribute(
+                "title",
+                "Updated pixel avatar"
+            );
+
+            document.getElementById("status").innerText =
+                "Avatar style and attribute changed.";
+        }
+
+
+        // Change page theme
+        function changeTheme() {
+
+            document.body.classList.toggle("dark");
+
+            document.getElementById("status").innerText =
+                "Theme changed using the DOM.";
+        }
+
+    </script>
+
+</body>
+
+</html>

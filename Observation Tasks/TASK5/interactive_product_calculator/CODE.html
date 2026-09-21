@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3eee7;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 420px;
+            background: #fffdf9;
+            padding: 30px;
+            border-radius: 14px;
+
+            border: 1px solid #e5ddd2;
+            box-shadow: 0 8px 25px rgba(70, 55, 40, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0 0 8px;
+            color: #3d3027;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8a7b70;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: bold;
+            color: #4b3b31;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d6c9bc;
+            border-radius: 7px;
+
+            font-size: 15px;
+            outline: none;
+            background: white;
+        }
+
+        input:focus {
+            border-color: #c56a35;
+            box-shadow: 0 0 0 3px rgba(197, 106, 53, 0.12);
+        }
+
+        .quantity-box {
+            display: flex;
+            gap: 8px;
+        }
+
+        .quantity-box input {
+            text-align: center;
+        }
+
+        .qty-btn {
+            width: 45px;
+            border: none;
+            border-radius: 7px;
+
+            background: #c56a35;
+            color: white;
+
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .qty-btn:hover {
+            background: #a95427;
+        }
+
+        .summary {
+            margin-top: 25px;
+            padding: 18px;
+            background: #f8f2eb;
+            border-radius: 10px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+
+            margin: 10px 0;
+            color: #6d5d50;
+        }
+
+        .total {
+            border-top: 1px solid #dfd2c5;
+            padding-top: 12px;
+            margin-top: 12px;
+
+            font-size: 22px;
+            font-weight: bold;
+            color: #a95427;
+        }
+
+        .product-display {
+            text-align: center;
+            margin-top: 18px;
+
+            color: #806f62;
+            font-size: 14px;
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                width: 90%;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Product Calculator</h1>
+
+        <p class="subtitle">
+            Enter the details to calculate the total
+        </p>
+
+
+        <label for="productName">Product Name</label>
+
+        <input
+            type="text"
+            id="productName"
+            placeholder="Example: Wireless Mouse"
+        >
+
+
+        <label for="price">Price</label>
+
+        <input
+            type="number"
+            id="price"
+            placeholder="Enter price"
+            min="0"
+        >
+
+
+        <label>Quantity</label>
+
+        <div class="quantity-box">
+
+            <button class="qty-btn" id="minus">−</button>
+
+            <input
+                type="number"
+                id="quantity"
+                value="1"
+                min="1"
+            >
+
+            <button class="qty-btn" id="plus">+</button>
+
+        </div>
+
+
+        <div class="summary">
+
+            <div class="row">
+                <span>Price</span>
+                <span id="priceDisplay">₹0.00</span>
+            </div>
+
+            <div class="row">
+                <span>Quantity</span>
+                <span id="quantityDisplay">1</span>
+            </div>
+
+            <div class="row total">
+                <span>Total</span>
+                <span id="total">₹0.00</span>
+            </div>
+
+        </div>
+
+
+        <div class="product-display" id="productDisplay">
+            No product selected
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Getting elements from the page
+
+        const productName =
+            document.getElementById("productName");
+
+        const price =
+            document.getElementById("price");
+
+        const quantity =
+            document.getElementById("quantity");
+
+        const priceDisplay =
+            document.getElementById("priceDisplay");
+
+        const quantityDisplay =
+            document.getElementById("quantityDisplay");
+
+        const total =
+            document.getElementById("total");
+
+        const productDisplay =
+            document.getElementById("productDisplay");
+
+        const plus =
+            document.getElementById("plus");
+
+        const minus =
+            document.getElementById("minus");
+
+
+        // Function to calculate the total price
+
+        function calculateTotal() {
+
+            let priceValue = Number(price.value);
+
+            let quantityValue = Number(quantity.value);
+
+
+            // Prevent invalid values
+
+            if (isNaN(priceValue) || priceValue < 0) {
+                priceValue = 0;
+            }
+
+            if (isNaN(quantityValue) || quantityValue < 1) {
+                quantityValue = 1;
+                quantity.value = 1;
+            }
+
+
+            // Calculate total
+
+            let totalPrice =
+                priceValue * quantityValue;
+
+
+            // Update the page
+
+            priceDisplay.innerText =
+                "₹" + priceValue.toFixed(2);
+
+            quantityDisplay.innerText =
+                quantityValue;
+
+            total.innerText =
+                "₹" + totalPrice.toFixed(2);
+
+
+            // Display product name
+
+            if (productName.value.trim() !== "") {
+
+                productDisplay.innerText =
+                    "You are buying: " +
+                    productName.value;
+
+            } else {
+
+                productDisplay.innerText =
+                    "No product selected";
+            }
+        }
+
+
+        // Update total when price changes
+
+        price.addEventListener(
+            "input",
+            calculateTotal
+        );
+
+
+        // Update total when quantity changes
+
+        quantity.addEventListener(
+            "input",
+            calculateTotal
+        );
+
+
+        // Update product name display
+
+        productName.addEventListener(
+            "input",
+            calculateTotal
+        );
+
+
+        // Increase quantity
+
+        plus.addEventListener(
+            "click",
+            function () {
+
+                quantity.value =
+                    Number(quantity.value) + 1;
+
+                calculateTotal();
+            }
+        );
+
+
+        // Decrease quantity
+
+        minus.addEventListener(
+            "click",
+            function () {
+
+                if (Number(quantity.value) > 1) {
+
+                    quantity.value =
+                        Number(quantity.value) - 1;
+
+                    calculateTotal();
+                }
+            }
+        );
+
+
+        // Calculate initial value
+
+        calculateTotal();
+
+    </script>
+
+</body>
+</html>
