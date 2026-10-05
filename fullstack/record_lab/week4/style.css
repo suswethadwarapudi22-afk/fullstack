@@ -1,0 +1,75 @@
+/* Page */
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 30px;
+}
+
+/* Heading */
+
+h1{
+    color: #e10600;
+}
+
+/* Input and Dropdown */
+
+input, select{
+    width: 250px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}
+
+/* Button */
+
+button{
+    background-color: #e10600;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #b30000;
+}
+
+/* Card */
+
+#card{
+    width: 350px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    text-align: left;
+}
+
+/* Card Heading */
+
+#card h2{
+    text-align: center;
+    color: #e10600;
+}
+
+/* Card Text */
+
+#card p{
+    font-size: 18px;
+    margin: 12px 0;
+}
+
+/* Horizontal Line */
+
+hr{
+    width: 60%;
+    margin: 25px auto;
+}

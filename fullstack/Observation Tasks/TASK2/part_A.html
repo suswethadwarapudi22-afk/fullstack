@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Canvas</title>
+</head>
+<body>
+
+    <h1>HTML5 Canvas Example</h1>
+
+    <canvas id="myCanvas" width="500" height="300" style="border:1px solid black;">
+        Your browser does not support the canvas element.
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        // Rectangle
+        ctx.fillStyle = "lightblue";
+        ctx.fillRect(20, 20, 120, 70);
+
+        // Circle
+        ctx.beginPath();
+        ctx.arc(220, 55, 35, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        // Line
+        ctx.beginPath();
+        ctx.moveTo(20, 150);
+        ctx.lineTo(250, 150);
+        ctx.stroke();
+
+        // Text
+        ctx.font = "24px Arial";
+        ctx.fillStyle = "blue";
+        ctx.fillText("suswetha", 20, 230);
+    </script>
+
+</body>
+</html>

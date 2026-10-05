@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS3 Styling</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f4f4;
+}
+
+/* Header */
+header{
+    background:linear-gradient(to right,#4facfe,#00f2fe);
+    color:white;
+    text-align:center;
+    padding:20px;
+    text-shadow:2px 2px 4px gray;
+    font-size:30px;
+}
+
+/* Navigation */
+nav{
+    background:#333;
+    text-align:center;
+    padding:12px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:20px;
+    font-size:18px;
+}
+
+nav a:hover{
+    color:yellow;
+}
+
+/* Cards */
+.container{
+    display:flex;
+    justify-content:space-around;
+    margin:20px;
+}
+
+.card{
+    width:28%;
+    background:white;
+    border:2px solid #ddd;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:5px 5px 10px gray;
+    text-align:center;
+}
+
+.card h2{
+    font-family:Georgia, serif;
+}
+
+.card button{
+    background:#007BFF;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.card button:hover{
+    background:green;
+}
+
+/* Footer */
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:20px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    CSS3 Webpage Design
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Card 1</h2>
+        <p>This is the first content card.</p>
+        <button>Read More</button>
+    </div>
+
+    <div class="card">
+        <h2>Card 2</h2>
+        <p>This is the second content card.</p>
+        <button>Read More</button>
+    </div>
+
+    <div class="card">
+        <h2>Card 3</h2>
+        <p>This is the third content card.</p>
+        <button>Read More</button>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 CSS3 Styling Example
+</footer>
+
+</body>
+</html>

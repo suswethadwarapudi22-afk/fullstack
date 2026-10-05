@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Arrays and Functions</title>
+</head>
+
+<body>
+    <h1>My F1 Driver List</h1>
+
+    <p id="date"></p>
+    <p id="time"></p>
+
+    <hr>
+
+    <h2>Enter Driver</h2>
+    <input type="text" id="itemInput" placeholder="Enter driver name">
+    <button onclick="addItem()">Add Driver</button>
+    <button onclick="showList()">Show List</button>
+
+    <hr>
+
+    <h2>Output</h2>
+    <p id="list"></p>
+    <p id="count"></p>
+    <p id="message"></p>
+
+    <script>
+        let items = [];
+
+        function addItem() {
+            const input = document.getElementById("itemInput");
+            const item = input.value.trim();
+
+            if (item === "") {
+                alert("Please enter a driver!");
+                input.focus();
+                return;
+            }
+
+            items.push(item);
+            input.value = "";
+            input.focus();
+            document.getElementById("message").textContent = "Driver added to the grid!";
+            showList();
+        }
+
+        function showList() {
+            const list = document.getElementById("list");
+            const count = document.getElementById("count");
+            const message = document.getElementById("message");
+
+            list.innerHTML = "<b>Drivers:</b> " + (items.length === 0 ? "No drivers added yet." : items.join(", "));
+            count.innerHTML = "<b>Total Drivers:</b> " + items.length;
+
+            if (items.length === 0) {
+                message.textContent = "The grid is empty.";
+            } else if (items.length >= 5) {
+                message.textContent = "The grid is getting packed!";
+            } else {
+                message.textContent = "The grid looks good!";
+            }
+        }
+
+        function showDate() {
+            const today = new Date();
+            document.getElementById("date").innerHTML = "<b>Date:</b> " + today.toDateString();
+        }
+
+        function showTime() {
+            const today = new Date();
+            document.getElementById("time").innerHTML = "<b>Time:</b> " + today.toLocaleTimeString();
+        }
+
+        showDate();
+        showTime();
+        setInterval(showTime, 1000);
+        showList();
+    </script>
+</body>
+
+</html>
